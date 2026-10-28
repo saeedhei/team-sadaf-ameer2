@@ -1,0 +1,6 @@
+{
+  "name": "EU Gardening Services Manchester",
+  "description": "Professional gardening, lawn care, hedge trimming, makeovers, and pressure washing across Openshaw, Manchester and Greater Manchester. Free no-obligation quotes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
