@@ -9,7 +9,7 @@ interface NavbarProps {
 
 export default function Navbar({ onMenuClick }: NavbarProps) {
   return (
-    <header className="h-16 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between shadow-sm shrink-0">
+    <header className="sticky top-0 z-30 h-16 bg-white border-b border-slate-200 px-4 md:px-6 flex items-center justify-between shadow-sm shrink-0">
       {/* Left Search and Hamburger Menu Toggle */}
       <div className="flex items-center gap-3">
         <button 

@@ -73,23 +73,23 @@ export default function AllQuizzesPage() {
   );
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto">
+    <div className="w-full max-w-7xl mx-auto space-y-6 sm:space-y-8 p-4 sm:p-6 lg:p-8 pb-16 bg-white min-h-full">
       
       {/* Top Banner Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <h2 className="text-xl font-bold text-slate-900 tracking-tight">Quiz Management Directory</h2>
-          <p className="text-xs text-slate-500 mt-1">Browse, test preview, update or remove your instructor quiz modules.</p>
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">Quiz Management Directory</h2>
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">Browse, test preview, update or remove your instructor quiz modules.</p>
         </div>
-        <Link href="/">
-          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white gap-2 font-medium shadow-sm shadow-indigo-500/20">
+        <Link href="/quizzes/create" className="w-full sm:w-auto">
+          <Button className="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white gap-2 font-medium shadow-xs shadow-indigo-500/20 text-xs sm:text-sm h-10 px-4 rounded-xl">
             <PlusCircle className="w-4 h-4" /> Create New Quiz
           </Button>
         </Link>
       </div>
 
       {/* Search Input Bar */}
-      <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center gap-3">
+      <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-xs flex items-center gap-3">
         <Search className="w-4 h-4 text-slate-400 shrink-0 ml-1" />
         <Input 
           placeholder="Search quiz by title..."
@@ -99,21 +99,21 @@ export default function AllQuizzesPage() {
         />
       </div>
 
-      {/* Modern Grid Cards Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* Modern Grid Cards Layout - Responsive 1 col on mobile, 2 on tablet/desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {filteredQuizzes.length > 0 ? (
           filteredQuizzes.map((quiz) => (
-            <Card key={quiz.id} className="bg-white border-slate-200 shadow-sm hover:shadow-md transition rounded-2xl flex flex-col justify-between">
-              <CardContent className="p-6 space-y-4">
+            <Card key={quiz.id} className="bg-white border-slate-200 shadow-xs hover:shadow-md transition rounded-2xl flex flex-col justify-between">
+              <CardContent className="p-4 sm:p-6 space-y-4">
                 
                 {/* Card Top: Title & Status Badge */}
                 <div className="flex items-start justify-between gap-3">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 mt-0.5">
                       <FileText className="w-5 h-5" />
                     </div>
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900 leading-snug">{quiz.title}</h3>
+                    <div className="min-w-0">
+                      <h3 className="text-sm sm:text-base font-bold text-slate-900 leading-snug truncate">{quiz.title}</h3>
                       <p className="text-xs text-slate-500 mt-1 line-clamp-2">{quiz.description}</p>
                     </div>
                   </div>
@@ -129,30 +129,30 @@ export default function AllQuizzesPage() {
                 {/* Card Stats Chips */}
                 <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-xs text-slate-600 font-medium">
                   <div className="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg">
-                    <HelpCircle className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>{quiz.questions} Qs</span>
+                    <HelpCircle className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                    <span className="truncate">{quiz.questions} Qs</span>
                   </div>
                   <div className="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg">
-                    <Clock className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>{quiz.duration}</span>
+                    <Clock className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                    <span className="truncate">{quiz.duration}</span>
                   </div>
                   <div className="flex items-center gap-1.5 bg-slate-50 p-2 rounded-lg">
-                    <Award className="w-3.5 h-3.5 text-indigo-600" />
-                    <span>{quiz.attempts} Std</span>
+                    <Award className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+                    <span className="truncate">{quiz.attempts} Std</span>
                   </div>
                 </div>
 
               </CardContent>
 
               {/* Card Footer Actions */}
-              <div className="px-6 py-3 bg-slate-50/70 border-t border-slate-100 rounded-b-2xl flex items-center justify-between text-xs">
+              <div className="px-4 sm:px-6 py-3 bg-slate-50/70 border-t border-slate-100 rounded-b-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
                 <span className="text-slate-400 font-medium">Created: {quiz.date}</span>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 w-full sm:w-auto justify-end">
                   <Button 
                     variant="ghost" 
                     size="sm" 
                     onClick={() => handlePreview(quiz)}
-                    className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 h-8 px-2.5 gap-1.5 font-medium"
+                    className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 h-8 px-2 gap-1 font-medium"
                   >
                     <Eye className="w-3.5 h-3.5" /> Preview
                   </Button>
@@ -160,7 +160,7 @@ export default function AllQuizzesPage() {
                     variant="ghost" 
                     size="sm" 
                     onClick={() => handleEdit(quiz)}
-                    className="text-slate-600 hover:text-blue-600 hover:bg-blue-50 h-8 px-2.5 gap-1.5 font-medium"
+                    className="text-slate-600 hover:text-blue-600 hover:bg-blue-50 h-8 px-2 gap-1 font-medium"
                   >
                     <Edit className="w-3.5 h-3.5" /> Edit
                   </Button>
@@ -168,7 +168,7 @@ export default function AllQuizzesPage() {
                     variant="ghost" 
                     size="sm" 
                     onClick={() => handleDelete(quiz.id)}
-                    className="text-rose-500 hover:text-rose-700 hover:bg-rose-50 h-8 px-2.5 gap-1.5 font-medium"
+                    className="text-rose-500 hover:text-rose-700 hover:bg-rose-50 h-8 px-2 gap-1 font-medium"
                   >
                     <Trash2 className="w-3.5 h-3.5" /> Delete
                   </Button>
@@ -177,7 +177,7 @@ export default function AllQuizzesPage() {
             </Card>
           ))
         ) : (
-          <div className="col-span-2 bg-white p-12 text-center rounded-2xl border border-slate-200">
+          <div className="col-span-full bg-white p-12 text-center rounded-2xl border border-slate-200">
             <p className="text-sm text-slate-400">No quizzes found matching your search query.</p>
           </div>
         )}
@@ -215,7 +215,7 @@ export default function AllQuizzesPage() {
                     <span className="text-xs text-slate-400">Total Questions</span>
                     <p className="font-bold text-slate-800">{selectedQuiz.questions} Questions</p>
                   </div>
-                  <div className="bg-slate-50 p-3 rounded-xl">
+                  <div className="bg-slate-50 p-3 negeri-50 p-3 rounded-xl">
                     <span className="text-xs text-slate-400">Time Duration</span>
                     <p className="font-bold text-slate-800">{selectedQuiz.duration}</p>
                   </div>
