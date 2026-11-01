@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Natural Tones custom colors (ported from the original Vite app) */
+  --color-natural-bg: #f9f9f7;
+  --color-natural-text-main: #2d2d2d;
+  --color-natural-text-dark: #1a1a1a;
+  --color-natural-brand: #4a5d4e;
+  --color-natural-brand-hover: #3d4d41;
+  --color-natural-brand-light: #f2f4f2;
+  --color-natural-beige: #f5f2ed;
+  --color-natural-muted: #7a7a70;
+  --color-natural-secondary: #9a9a92;
+  --color-natural-border: #e5e5df;
+  --color-natural-border-dark: #d1d1cb;
+}
+
+:root {
+  --background: var(--color-natural-bg);
+  --foreground: var(--color-natural-text-main);
+}
+
+body {
+  background: var(--color-natural-bg);
+  color: var(--color-natural-text-main);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
